@@ -320,7 +320,7 @@ GameObject:
   - component: {fileID: 625824666}
   m_Layer: 5
   m_Name: UIRoot
-  m_TagString: Untagged
+  m_TagString: UIRoot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -557,6 +557,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f663891ef0c45d41b8fa7c728886009, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uiRootTrans: {fileID: 0}
 --- !u!4 &1906176781
 Transform:
   m_ObjectHideFlags: 0

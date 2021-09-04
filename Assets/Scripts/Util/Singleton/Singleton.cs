@@ -1,13 +1,8 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// 适用于不同类型的单例
-/// </summary>
-/// <typeparam name="T">需要设计成单例模式的子类对象</typeparam>
-
-public class UnitySingleton<T> : MonoBehaviour where T:Component
+public class Singleton<T> : MonoBehaviour where T:Component
 {
     private static T _instance;
 
@@ -15,11 +10,11 @@ public class UnitySingleton<T> : MonoBehaviour where T:Component
     {
         get
         {
-            if(_instance==null)
+            if (_instance == null)
             {
                 _instance = FindObjectOfType(typeof(T)) as T;
 
-                if(_instance==null)
+                if (_instance == null)
                 {
                     GameObject obj = new GameObject();
                     _instance = obj.AddComponent<T>();
@@ -27,5 +22,10 @@ public class UnitySingleton<T> : MonoBehaviour where T:Component
             }
             return _instance;
         }
+    }
+
+    private void Awake()
+    {
+        DontDestroyOnLoad(this);
     }
 }

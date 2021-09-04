@@ -63,8 +63,10 @@
     <Compile Include="Assets\Scripts\UI\OptionPanel.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\UIManager.cs" />
+    <Compile Include="Assets\Scripts\Util\Singleton\Singleton.cs" />
   </ItemGroup>
   <ItemGroup>
+     <None Include="Assets\streamingAssets\XML\UIPanelConfig.xml" />
     <Reference Include="UnityEngine">
       <HintPath>D:\UnityEditor\2020.2.3f1c1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>
