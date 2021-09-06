@@ -1,4 +1,5 @@
 <UIRoot>
   <Panel name="MainMenuPanel" prefabPath="MainPanels/MainMenuPanel"/>
+  <Panel name="SaveScenesPanel" prefabPath="MainPanels/SaveScenesPanel"/>
   <Panel name="OptionPanel" prefabPath="MainPanels/OptionPanel"/>
 </UIRoot>

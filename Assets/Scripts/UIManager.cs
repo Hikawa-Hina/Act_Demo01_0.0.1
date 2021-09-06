@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Xml;
@@ -10,18 +11,46 @@ public class UIManager :Singleton<UIManager>
     public Dictionary<string, BasePanel> uiBasePanelsDic = new Dictionary<string, BasePanel>();
 
 
-
+    [Header("Custom Events")]
+    [DisplayOnly] public VoidEventChannel btStartEvent;
+    [DisplayOnly] public VoidEventChannel btReturnMainEvent;
 
     private void Start()
     {
-        uiRootTrans = GameObject.FindGameObjectWithTag("UIRoot").transform;
+        InitEventChannel();
     }
+
+
+    public void InitEventChannel()
+    {
+        //之后的事件初始化都是这个步骤
+        //添加引用&&添加回调
+        btStartEvent = CustomEventChannelManager.GetInstance.LoadVoidEvent("Button/BtStartEvent");
+        btStartEvent.OnEventRaised += OnShowSceneList;
+
+        btReturnMainEvent = CustomEventChannelManager.GetInstance.LoadVoidEvent("Button/BtReturnMainEvent");
+        btReturnMainEvent.OnEventRaised += OnReturnMainMenu;
+
+
+        //游戏开始时的初始化界面
+        LoadUIPanelsFromRes(Application.streamingAssetsPath + "/XML/UIPanelConfig.xml");
+        ShowPanel_Designative("MainMenuPanel");
+    }
+
+    private void OnDisable()
+    {
+        btStartEvent.OnEventRaised -= OnShowSceneList;
+        btStartEvent.OnEventRaised -= OnReturnMainMenu;
+    }
+
 
     /// <summary>
     /// 加载panels的预制体
     /// </summary>
     public void LoadUIPanelsFromRes(string _path)
     {
+        uiRootTrans = GameObject.FindGameObjectWithTag("UIRoot").transform;
+
         XmlDocument xml_Panels = new XmlDocument();
 
         xml_Panels.Load(_path);
@@ -44,6 +73,7 @@ public class UIManager :Singleton<UIManager>
         //--------
     }
 
+
     /// <summary>
     /// 查找指定的Panel面板
     /// </summary>
@@ -60,15 +90,46 @@ public class UIManager :Singleton<UIManager>
             }
 
             //从预制体中生成指定panel
-            BasePanel spawnPanel = Instantiate(uiPanelPrefabsDic[_panelName]);
+            BasePanel spawnPanel = Instantiate(uiPanelPrefabsDic[_panelName],uiRootTrans);
             uiBasePanelsDic.Add(_panelName,spawnPanel);
-            spawnPanel.transform.SetParent(uiRootTrans);
 
             spawnPanel.ShowPanel();
-
             return;
         }
 
         uiBasePanelsDic[_panelName].ShowPanel();
     }
+
+    /// <summary>
+    /// 关闭所有的窗口
+    /// </summary>
+    public void HideAllPanel()
+    {
+        if(uiBasePanelsDic.Count>0)
+        {
+            foreach(BasePanel panel in uiBasePanelsDic.Values)
+            {
+                panel.HidePanel();
+                Debug.Log("已关闭所有panel");
+            }
+        }
+    }
+
+
+
+    //-----------------------------------------VOID EVENT CALLBACK-----------------------------------------------
+
+    private void OnShowSceneList()
+    {
+        HideAllPanel();
+        ShowPanel_Designative("SaveScenesPanel");
+    }
+
+    private void OnReturnMainMenu()
+    {
+        HideAllPanel();
+        ShowPanel_Designative("MainMenuPanel");
+    }
+
+    //-----------------------------------------------------------------------------------------------------------
 }

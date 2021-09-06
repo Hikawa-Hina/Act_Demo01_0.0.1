@@ -56,17 +56,21 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Wizard - 2D Character\Demo\WizDemo1.cs" />
-    <Compile Include="Assets\Wizard - 2D Character\Demo\SimplePlayerController.cs" />
-    <Compile Include="Assets\Scripts\UI\BasePanel.cs" />
-    <Compile Include="Assets\Scripts\UI\MainMenuPanel.cs" />
-    <Compile Include="Assets\Scripts\UI\OptionPanel.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\Util\Attribute\DisplayOnly.cs" />
+    <Compile Include="Assets\Wizard - 2D Character\Demo\SimplePlayerController.cs" />
+    <Compile Include="Assets\Scripts\Event\UI\VoidEventChannel.cs" />
+    <Compile Include="Assets\Scripts\UI\OptionPanel.cs" />
     <Compile Include="Assets\Scripts\UIManager.cs" />
+    <Compile Include="Assets\Scripts\UI\BasePanel.cs" />
     <Compile Include="Assets\Scripts\Util\Singleton\Singleton.cs" />
+    <Compile Include="Assets\Scripts\UI\MainMenuPanel.cs" />
+    <Compile Include="Assets\Wizard - 2D Character\Demo\WizDemo1.cs" />
+    <Compile Include="Assets\Scripts\Event\CustomEventChannelManager.cs" />
+    <Compile Include="Assets\Scripts\UI\SaveScenesPanel.cs" />
   </ItemGroup>
   <ItemGroup>
-     <None Include="Assets\streamingAssets\XML\UIPanelConfig.xml" />
+     <None Include="Assets\StreamingAssets\XML\UIPanelConfig.xml" />
     <Reference Include="UnityEngine">
       <HintPath>D:\UnityEditor\2020.2.3f1c1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>
