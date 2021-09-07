@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class MainMenuPanel : BasePanel
 {
     [SerializeField] private Button startButton;
+    [SerializeField] private Button optionButton;
     
     public override void ShowPanel()
     {
@@ -18,5 +19,6 @@ public class MainMenuPanel : BasePanel
 
         //为按钮添加事件
         AddButtonListener_Void(startButton, UIManager.GetInstance.btStartEvent);
+        AddButtonListener_Void(optionButton, UIManager.GetInstance.btOpenOptionEvent);
     }
 }

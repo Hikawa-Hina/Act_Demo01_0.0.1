@@ -370,7 +370,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startButton: {fileID: 4574320103479498983}
-  returnMainButton: {fileID: 0}
+  optionButton: {fileID: 4574320102928751303}
 --- !u!1 &4574320102778708869
 GameObject:
   m_ObjectHideFlags: 0

@@ -601,6 +601,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   btStartEvent: {fileID: 0}
+  btOpenOptionEvent: {fileID: 0}
+  btScenesListEvent: {fileID: 0}
   btReturnMainEvent: {fileID: 0}
 --- !u!4 &1906176781
 Transform:

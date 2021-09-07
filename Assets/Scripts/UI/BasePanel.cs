@@ -21,7 +21,7 @@ public class BasePanel : MonoBehaviour
 
 
     /// <summary>
-    /// 为按钮添加事件回调
+    /// 为当前面板中的按钮添加事件回调
     /// </summary>
     /// <param name="_button"></param>
     /// <param name="_voidEventChannel">事件中介对象</param>

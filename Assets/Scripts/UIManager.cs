@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Xml;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class UIManager :Singleton<UIManager>
 {
@@ -13,7 +15,13 @@ public class UIManager :Singleton<UIManager>
 
     [Header("Custom Events")]
     [DisplayOnly] public VoidEventChannel btStartEvent;
+    [DisplayOnly] public VoidEventChannel btOpenOptionEvent;
+    [DisplayOnly] public VoidEventChannel btScenesListEvent;
+
     [DisplayOnly] public VoidEventChannel btReturnMainEvent;
+
+    private Transform lastSceneListActionButton=null;
+
 
     private void Start()
     {
@@ -25,11 +33,20 @@ public class UIManager :Singleton<UIManager>
     {
         //之后的事件初始化都是这个步骤
         //添加引用&&添加回调
-        btStartEvent = CustomEventChannelManager.GetInstance.LoadVoidEvent("Button/BtStartEvent");
+
+        //MainMenuPanel
+        btStartEvent = CustomEventChannelManager.GetInstance.LoadVoidEvent("Button/MainMenuPanel/BtStartEvent");
         btStartEvent.OnEventRaised += OnShowSceneList;
+
+        btOpenOptionEvent = CustomEventChannelManager.GetInstance.LoadVoidEvent("Button/MainMenuPanel/BtOpenOptionEvent");
+        btOpenOptionEvent.OnEventRaised += OnOpenOption;
 
         btReturnMainEvent = CustomEventChannelManager.GetInstance.LoadVoidEvent("Button/BtReturnMainEvent");
         btReturnMainEvent.OnEventRaised += OnReturnMainMenu;
+
+        //SaveScenesPanel
+        btScenesListEvent = CustomEventChannelManager.GetInstance.LoadVoidEvent("Button/SaveScenesPanel/BtSceneListChannel");
+        btScenesListEvent.OnEventRaised += OnChoseScene;
 
 
         //游戏开始时的初始化界面
@@ -37,10 +54,14 @@ public class UIManager :Singleton<UIManager>
         ShowPanel_Designative("MainMenuPanel");
     }
 
+  
+
     private void OnDisable()
     {
         btStartEvent.OnEventRaised -= OnShowSceneList;
+        btOpenOptionEvent.OnEventRaised -= OnOpenOption;
         btStartEvent.OnEventRaised -= OnReturnMainMenu;
+        btScenesListEvent.OnEventRaised -= OnChoseScene;
     }
 
 
@@ -125,11 +146,48 @@ public class UIManager :Singleton<UIManager>
         ShowPanel_Designative("SaveScenesPanel");
     }
 
+    private void OnOpenOption()
+    {
+        HideAllPanel();
+        ShowPanel_Designative("OptionPanel");
+    }
+
     private void OnReturnMainMenu()
     {
         HideAllPanel();
         ShowPanel_Designative("MainMenuPanel");
     }
+
+    private void OnChoseScene()
+    {
+        //隐藏掉上一个进入存档的按钮 
+        if(lastSceneListActionButton != null)
+        {
+            lastSceneListActionButton.gameObject.SetActive(false);
+        }
+
+        var sceneButton = EventSystem.current.currentSelectedGameObject;
+        Debug.Log(sceneButton.name);
+
+        //存储当前需要处理
+        Button currSceneListButton = sceneButton.GetComponent<Button>();
+
+        //根据选择的存档列表按钮来产生不同回调
+        //switch
+        //case
+        Transform currActionButton = sceneButton.transform.Find("BtEnter");
+        //if 有存档
+        //按钮文本为：进入
+        //else
+        //按钮文本为：开始一个新存档
+        currActionButton.gameObject.SetActive(true);
+
+
+        //记录上一个sceneListButton,也就是当前处理完了的按钮
+        lastSceneListActionButton = currActionButton;
+    }
+
+    
 
     //-----------------------------------------------------------------------------------------------------------
 }

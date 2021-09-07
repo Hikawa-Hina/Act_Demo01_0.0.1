@@ -56,6 +56,8 @@
     <Analyzer Include="C:\Program Files (x86)\Microsoft Visual Studio Tools for Unity\16.0\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\UI\SaveScenesPanel.cs" />
+    <Compile Include="Assets\Scripts\Event\CustomEventChannelManager.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\Util\Attribute\DisplayOnly.cs" />
     <Compile Include="Assets\Wizard - 2D Character\Demo\SimplePlayerController.cs" />
@@ -66,8 +68,6 @@
     <Compile Include="Assets\Scripts\Util\Singleton\Singleton.cs" />
     <Compile Include="Assets\Scripts\UI\MainMenuPanel.cs" />
     <Compile Include="Assets\Wizard - 2D Character\Demo\WizDemo1.cs" />
-    <Compile Include="Assets\Scripts\Event\CustomEventChannelManager.cs" />
-    <Compile Include="Assets\Scripts\UI\SaveScenesPanel.cs" />
   </ItemGroup>
   <ItemGroup>
      <None Include="Assets\StreamingAssets\XML\UIPanelConfig.xml" />

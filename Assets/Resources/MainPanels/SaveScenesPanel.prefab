@@ -213,7 +213,7 @@ GameObject:
   - component: {fileID: 1166107537808242107}
   - component: {fileID: 1166107537808242100}
   m_Layer: 5
-  m_Name: BtSaveFile (1)
+  m_Name: BtSaveFile02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -850,6 +850,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   returnMainButton: {fileID: 1166107538991151071}
+  btSaveFile01: {fileID: 1166107539318384215}
+  btSaveFile02: {fileID: 1166107537808242100}
+  btSaveFile03: {fileID: 1166107539349575887}
 --- !u!1 &1166107538450662710
 GameObject:
   m_ObjectHideFlags: 0
@@ -1621,7 +1624,7 @@ GameObject:
   - component: {fileID: 1166107539318384214}
   - component: {fileID: 1166107539318384215}
   m_Layer: 5
-  m_Name: BtSaveFile
+  m_Name: BtSaveFile01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1784,7 +1787,7 @@ GameObject:
   - component: {fileID: 1166107539349575886}
   - component: {fileID: 1166107539349575887}
   m_Layer: 5
-  m_Name: BtSaveFile (2)
+  m_Name: BtSaveFile03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
